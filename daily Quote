@@ -1,0 +1,29 @@
+name: Update Quote
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天北京时间早上 8 点运行
+  workflow_dispatch:
+
+jobs:
+  update-quote:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 必须赋予写入权限
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Fetch and Update
+        run: |
+          # 获取一句励志语
+          QUOTE=$(curl -s https://v1.hitokoto.cn/?c=i&encode=text)
+          # 将 README 中的占位符替换
+          sed -i "//,//c\\n> $QUOTE\n" README.md
+      
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "每日格言更新"
+          git push
