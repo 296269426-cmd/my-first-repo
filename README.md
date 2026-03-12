@@ -10,7 +10,8 @@
 * **Telegram**: 探索各种有趣的 Bot。
 
 ## 🚀 我的目标
-- [ ] 提交我的第一行 Python 代码
+- [ ] 提交我的第一行 Python 代码![IMAG1457_comps](https://github.com/user-attachments/assets/806b04ec-77c2-4a85-a2f9-77c9a7209982)
+
 - [ ] 获得我的第一个 Star ⭐
 - [x] 编辑 README 文件
 
