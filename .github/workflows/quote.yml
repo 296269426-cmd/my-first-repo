@@ -1,0 +1,17 @@
+name: Update Quote
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 时间 0点（北京时间 8点）运行
+  workflow_dispatch: # 允许手动点击运行
+
+jobs:
+  update-quote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/blog-post-workflow@master # 虽然名字叫博客，但它也支持随机引用
+        with:
+          comment_tag_name: "QUOTE"
+          feed_list: "https://v1.hitokoto.cn/?c=i&encode=text" # 这是一个中文随机句子接口
+
